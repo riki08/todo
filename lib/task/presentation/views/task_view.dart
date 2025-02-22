@@ -5,6 +5,13 @@ class TaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Task Manager'),
+      ),
+      body: const Center(
+        child: Text('Hello World'),
+      ),
+    );
   }
 }
