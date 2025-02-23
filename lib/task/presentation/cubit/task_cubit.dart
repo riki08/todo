@@ -14,9 +14,43 @@ class TaskCubit extends Cubit<TaskState> {
     try {
       emit(TaskLoading());
       final tasks = await taskRepository.getTasks();
+
       emit(TaskLoaded(tasks));
     } catch (e) {
       emit(TaskError("Error al cargar las tareas"));
+    }
+  }
+
+  Future<void> addTask(TaskModel task) async {
+    try {
+      // TODO : se podria agregar una variable en el cubit que tengas el listado de tareas y agrega, eliminar o actualizar si cada llamado es correcto
+      emit(TaskLoading());
+      await taskRepository.addTask(task);
+      getTasks();
+    } catch (e) {
+      emit(TaskError("Error al agregar la tarea"));
+    }
+  }
+
+  Future<void> updateTask(TaskModel task) async {
+    try {
+      // TODO : se podria agregar una variable en el cubit que tengas el listado de tareas y agrega, eliminar o actualizar si cada llamado es correcto
+      emit(TaskLoading());
+      await taskRepository.updateTask(task);
+      getTasks();
+    } catch (e) {
+      emit(TaskError("Error al actualizar la tarea"));
+    }
+  }
+
+  Future<void> deleteTask(TaskModel task) async {
+    try {
+      // TODO : se podria agregar una variable en el cubit que tengas el listado de tareas y agrega, eliminar o actualizar si cada llamado es correcto
+      emit(TaskLoading());
+      await taskRepository.deleteTask(task);
+      getTasks();
+    } catch (e) {
+      emit(TaskError("Error al eliminar la tarea"));
     }
   }
 }

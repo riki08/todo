@@ -7,7 +7,23 @@ class TaskRepositoryImpl implements TaskRepository {
 
   TaskRepositoryImpl(this.taskService);
 
+  @override
   Future<List<TaskModel>> getTasks() async {
     return await taskService.getTasks();
+  }
+
+  @override
+  Future<void> addTask(TaskModel task) async {
+    await taskService.addTask(task);
+  }
+
+  @override
+  Future<void> updateTask(TaskModel task) async {
+    await taskService.updateTask(task);
+  }
+
+  @override
+  Future<void> deleteTask(TaskModel task) async {
+    await taskService.deleteTask(task);
   }
 }
